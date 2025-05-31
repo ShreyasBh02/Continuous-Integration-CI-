@@ -33,7 +33,7 @@ jobs:
       - name: Run Tests
         run: pytest tests/
         env:
-          SENDER_EMAIL: ${{ secrets.SEND_EMAIL }}
+            SENDER_EMAIL: ${{ secrets.SEND_EMAIL }}
           SENDER_PASSWORD: ${{ secrets.SEND_PASSWORD }}
           RECEIVER_EMAIL: ${{ secrets.RECEIV_EMAIL }}
 
