@@ -30,20 +30,20 @@ jobs:
           pip install -r requirements.txt
           pip install pytest
 
-      - name: "Run Tests"
+      - name: Run Tests
         run: pytest tests/
         env:
-          SENDER_EMAIL: ${{ secrets.SENDER_EMAIL }}
-          SENDER_PASSWORD: ${{ secrets.SENDER_PASSWORD }}
-          RECEIVER_EMAIL: ${{ secrets.RECEIVER_EMAIL }}
+          SENDER_EMAIL: ${{ secrets.SEND_EMAIL }}
+          SENDER_PASSWORD: ${{ secrets.SEND_PASSWORD }}
+          RECEIVER_EMAIL: ${{ secrets.RECEIV_EMAIL }}
 
-
-      - name: Run System Monitor
+      - name: "Run app.py script"
         run: python app/app.py
         env:
-          SENDER_EMAIL: ${{ secrets.SENDER_EMAIL }}
-          SENDER_PASSWORD: ${{ secrets.SENDER_PASSWORD }}
-          RECEIVER_EMAIL: ${{ secrets.RECEIVER_EMAIL }}
           WORKFLOW_NAME: ${{ github.workflow }}
           REPO_NAME: ${{ github.repository }}
           WORKFLOW_RUN_ID: ${{ github.run_id }}
+          SENDER_EMAIL: ${{ secrets.SEND_EMAIL }}
+          SENDER_PASSWORD: ${{ secrets.SEND_PASSWORD }}
+          RECEIVER_EMAIL: ${{ secrets.RECEIV_EMAIL }}
+
