@@ -41,7 +41,8 @@ def send_Mail(subject, body):
 
 ## Helth Monitor
 def monitor_health():
-    while True:
+    start_time = time.time()
+    while (time.time() - start_time) < MONITOR_DURATION:
         cpu = psutil.cpu_percent()
         if cpu > CPU_THRESHOLD:
             msg = f"[ALERT] High CPU Usage Detected: {cpu} % at {datetime.now()}"
@@ -55,11 +56,10 @@ if __name__ == "__main__":
     if not os.path.exists(MONITOR_DIR):
         os.makedirs(MONITOR_DIR)
 
-    Thread(target=monitor_health, daemon=True).start()
-
-
     print("[SYSTEM MONITORING STARTED]")
-    while True:
-        time.sleep(1)   
+    monitor_thread = Thread(target=monitor_health)
+    monitor_thread.start()
+    monitor_thread.join()  # Wait for monitoring to finish
+    print("[SYSTEM MONITORING ENDED]") 
 
         
