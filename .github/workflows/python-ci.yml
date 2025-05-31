@@ -32,14 +32,18 @@ jobs:
 
       - name: "Run Tests"
         run: pytest tests/
+        env:
+          SENDER_EMAIL: ${{ secrets.SENDER_EMAIL }}
+          SENDER_PASSWORD: ${{ secrets.SENDER_PASSWORD }}
+          RECEIVER_EMAIL: ${{ secrets.RECEIVER_EMAIL }}
 
 
       - name: Run System Monitor
-        run: python app.py
+        run: python app/app.py
         env:
+          SENDER_EMAIL: ${{ secrets.SENDER_EMAIL }}
+          SENDER_PASSWORD: ${{ secrets.SENDER_PASSWORD }}
+          RECEIVER_EMAIL: ${{ secrets.RECEIVER_EMAIL }}
           WORKFLOW_NAME: ${{ github.workflow }}
           REPO_NAME: ${{ github.repository }}
           WORKFLOW_RUN_ID: ${{ github.run_id }}
-          SENDER_PASSWORD: ${{secrets.SEND_PASSWORD}}
-          SENDER_EMAIL: ${{ secrets.SEND_EMAIL }} 
-          RECEIVER_EMAIL: ${{ secrets.RECEIV_EMAIL }}
