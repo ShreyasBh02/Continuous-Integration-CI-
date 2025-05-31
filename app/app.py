@@ -10,7 +10,8 @@ from threading import Thread
 ## Config
 MONITOR_DIR = "./monitor" # Directory to watch
 CPU_THRESHOLD = 75 # %
-CHECK_INTERVAL = 10 # sec
+CHECK_INTERVAL = 2 # sec
+MONITOR_DURATION = 10 # seconds for monitoring duration
 SENDER_EMAIL = os.getenv("SENDER_EMAIL")
 SENDER_PASSWORD = os.getenv("SENDER_PASSWORD")
 RECEIVER_EMAIL = os.getenv("RECEIVER_EMAIL")
@@ -43,10 +44,11 @@ def monitor_health():
     while True:
         cpu = psutil.cpu_percent()
         if cpu > CPU_THRESHOLD:
-            msg = f"[ALERT] High CPU Usage Detecte: {cpu} % at {datetime.now()}"
+            msg = f"[ALERT] High CPU Usage Detected: {cpu} % at {datetime.now()}"
             print(msg)
             send_Mail("CPU Usage Alert", msg)
-            time.sleep(CHECK_INTERVAL)
+        time.sleep(CHECK_INTERVAL)
+
 
 # -------- MAIN -------- #
 if __name__ == "__main__":
