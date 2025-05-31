@@ -2,7 +2,6 @@ import time
 import os
 import smtplib
 import psutil
-import requests
 from datetime import datetime
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
@@ -12,7 +11,6 @@ from threading import Thread
 MONITOR_DIR = "./monitor" # Directory to watch
 CPU_THRESHOLD = 75 # %
 CHECK_INTERVAL = 10 # sec
-API_URL = "https://api.github.com"
 SENDER_EMAIL = os.getenv("SENDER_EMAIL")
 SENDER_PASSWORD = os.getenv("SENDER_PASSWORD")
 RECEIVER_EMAIL = os.getenv("RECEIVER_EMAIL")

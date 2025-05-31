@@ -1,4 +1,4 @@
-name: "Send mail after workflow"
+name: Python CI - System Monitor
 
 on:
   push:
@@ -30,16 +30,16 @@ jobs:
           pip install -r requirements.txt
           pip install pytest
 
-      - name: Run Tests
-        run: |
-          pytest tests/
+      - name: "Run Tests"
+        run: pytest tests/
 
-      - name: "Send mail by excuting python script"
+
+      - name: Run System Monitor
         run: python app.py
         env:
           WORKFLOW_NAME: ${{ github.workflow }}
           REPO_NAME: ${{ github.repository }}
           WORKFLOW_RUN_ID: ${{ github.run_id }}
-          SENDER_PASSWORD: ${{ secrets.SENDER_PASSWORD }}
-          SENDER_EMAIL: ${{ secrets.SENDER_EMAIL }} 
-          RECEIVER_EMAIL: ${{ secrets.RECEIVER_EMAIL }}
+          SENDER_PASSWORD: ${{secrets.SEND_PASSWORD}}
+          SENDER_EMAIL: ${{ secrets.SEND_EMAIL }} 
+          RECEIVER_EMAIL: ${{ secrets.RECEIV_EMAIL }}

@@ -16,10 +16,10 @@ project-root/
 ├── app.py # Main monitoring script
 ├── requirements.txt # Python dependencies
 ├── tests/
-│ └── test_app.py # Unit tests
+│  └── test_app.py # Unit tests
 └── .github/
-└── workflows/
-└── python-ci.yml # CI Workflow for GitHub Actions
+   └── workflows/
+      └── python-ci.yml # CI Workflow for GitHub Actions
 
 
 ## 🔧 Setup

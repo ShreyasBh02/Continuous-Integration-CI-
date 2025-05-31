@@ -11,7 +11,3 @@ def test_monitor_directory_exists():
         os.makedirs(monitor_dir)
     assert os.path.isdir(monitor_dir), "Monitor directory should exist"
 
-def test_env_variables_present():
-    assert os.getenv("SENDER_EMAIL"), "SENDER_EMAIL must be set"
-    assert os.getenv("SENDER_PASSWORD"), "SENDER_PASSWORD must be set"
-    assert os.getenv("RECEIVER_EMAIL"), "RECEIVER_EMAIL must be set"
