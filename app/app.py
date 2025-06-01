@@ -30,6 +30,11 @@ def send_Mail(subject, body):
         msg['Subject'] = subject
         msg.attach(MIMEText(body, 'plain'))
 
+        print(f"Sending email from: {SENDER_EMAIL}")
+        print(f"Sending to: {RECEIVER_EMAIL}")
+        print(f"Subject: {subject}")
+        print(f"Body: {body}")
+
         server = smtplib.SMTP('smtp.gmail.com', 587)
         server.starttls()
         server.login(SENDER_EMAIL,SENDER_PASSWORD)
