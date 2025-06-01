@@ -19,8 +19,7 @@ RECEIVER_EMAIL = os.getenv("RECEIVER_EMAIL")
 
 ## Alert
 def send_Mail(subject, body):
-    subject = f"GitHub Workflow: {os.getenv('WORKFLOW_NAME')} completed"
-    body = f"Repository: {os.getenv('REPO_NAME')}\nRun ID: {os.getenv('WORKFLOW_RUN_ID')}"
+    
 
 
     try:
@@ -58,6 +57,12 @@ def monitor_health():
 
 # -------- MAIN -------- #
 if __name__ == "__main__":
+     ##Email Message
+    subject = f"GitHub Workflow: {os.getenv('WORKFLOW_NAME')} completed"
+    body = f"Repository: {os.getenv('REPO_NAME')}\nRun ID: {os.getenv('WORKFLOW_RUN_ID')}"
+
+    send_Mail(subject, body)
+    
     if not os.path.exists(MONITOR_DIR):
         os.makedirs(MONITOR_DIR)
 
