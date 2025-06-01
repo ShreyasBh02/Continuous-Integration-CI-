@@ -1,17 +1,15 @@
 name: Python CI - System Monitor
 
-# on:
-#   push:
-#     branches: 
-#       - main
-#       - master
-#   pull_request:
-#     branches:
-#       - main
-#       - master
+on:
+  push:
+    branches: 
+      - main
+      - master
+  pull_request:
+    branches:
+      - main
+      - master
 
-on: 
-  workflow_dispatch:
 
 jobs:
   send_email:
